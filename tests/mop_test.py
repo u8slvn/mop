@@ -26,7 +26,6 @@ def test_mop(mocker):
     unlink = mocker.patch("pathlib.Path.unlink")
     mop = Mop(dir_path=str(FIXTURES_DIR), extensions=[".mp3"], recursive=True, exclude=False)
 
-    mop.collect()
     files_to_delete_count = mop.files_to_delete_count
     mop.clean()
 

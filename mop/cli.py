@@ -54,7 +54,6 @@ if __name__ == "__main__":
         recursive=args.recursive,
         exclude=args.exclude,
     )
-    mop.collect()
     while True:
         ok = input(f"Mop collected {mop.files_to_delete_count} file(s) to delete, do you agree: [y/N]: ") or "n"
         if ok.lower() == "y":

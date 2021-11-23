@@ -30,15 +30,11 @@ class Mop:
     def __init__(self, dir_path: str, extensions: List[str], recursive: bool = False, exclude: bool = False):
         self.dir_path = Path(dir_path)
         self._collector = Collector(extensions=extensions, recursive=recursive, exclude=exclude)
-        self._files_to_delete = []
+        self._files_to_delete = self._collector(path=self.dir_path)
 
     @property
     def files_to_delete_count(self):
         return len(self._files_to_delete)
-
-    def collect(self):
-        if not self._files_to_delete:
-            self._files_to_delete = self._collector(path=self.dir_path)
 
     def clean(self):
         for file in self._files_to_delete:
